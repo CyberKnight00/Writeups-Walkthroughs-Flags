@@ -1,0 +1,36 @@
+Web CMS Detected: Drupal 7
+
+Method 1 =>As the website running with Drupal 7 so it is vulnerable to '34992.py' exploit which creates an admin user inside Drupal 7.
+
+Method 2 =>metasploit -> multi/HTTP/drupal_drupageddon 
+
+# This exploit gives us a low privileged shell into the victim machine
+
+
+*****************************************************************
+                                After ADMIN ACCOUNT
+
+Go to Modules => enable PHP filter -> Permission -> Enavle Use the PHP code text format 
+
+Got to content => Add content => Basic page => Set Text Format PHP code => ADD PHP code inside Body
+
+execute the PHP code by visiting that page but first start listener in out attacker machine
+
+*****************************************************************
+
+                                Inside victim machine
+
+=> SUID is is set for find command
+=> find . -exec /bin/sh \; -quit # It gives us Root shell
+
+*****************************************************************
+
+								root Flag
+
+Well done!!!!
+
+Hopefully, you've enjoyed this and learned some new skills.
+
+You can let me know what you thought of this little journey
+by contacting me via Twitter - @DCAU7
+
