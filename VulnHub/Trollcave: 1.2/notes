@@ -1,0 +1,4 @@
+ssh-keygen -f rails
+mv rails.pub authorized_keys
+../../../../../../home/rails/.ssh/authorized_keys
+ssh rails@192.168.0.55 -i rails
