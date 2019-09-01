@@ -1,0 +1,41 @@
+Flag #1 Don’t go Home Frank! There’s a Hex on Your House.
+	/oldIE/html5.js
+	flag{7c0132070a0ef71d542663e9dc1f5dee} - nmap
+
+Flag #2 Obscurity or Security?
+	port 22222
+	Flag{53c82eba31f6d416f331de9162ebe997} - encrypt
+
+Flag #3 Be Careful Agent, Frank Has Been Known to Intercept Traffic Our Traffic.
+	ssl cert
+	flag3{f82366a9ddc064585d54e3f78bde3221} - personnel
+
+Flag #4 A Good Agent is Hard to Find.
+	
+	flag{14e10d570047667f904261e6d08f520f} - evidence
+	Clue = new+flag
+	/newevidence
+	con man Frank Abagnale Jr
+
+Flag #5 The Devil is in the Details - Or is it Dialogue? Either Way, if it’s Simple, Guessable, or Personal it Goes Against Best Practices
+	/newevidence
+	carl.hanratty:Grace
+
+	flag{117c240d49f54096413dd64280399ea9} : panam
+	
+Flag #6 Where in the World is Frank?
+	steghide extract -sf Flag_5_image.jpg 
+	Enter passphrase: panam
+	flag{d1e5146b171928731385eb7ea38c37b8} : ILoveFrance
+
+Flag #7 Frank Was Caught on Camera Cashing Checks and Yelling - I’m The Fastest Man Alive!
+	#They are talking about Flash
+	ssh barryallen@skydogcon.ctfd.io -p 22222
+	->iheartbrenda
+	flag{bd2f6a1d5242c962a05619c56fa47ba6} : theflash
+
+Flag #8 Franks Lost His Mind or Maybe it’s His Memory. He’s Locked Himself Inside the Building. Find the Code to Unlock the Door Before He Gets Himself Killed!
+
+flag{841dd3db29b0fbbd89c7b5be768cdc81} : Two little mice
+
+https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/39773.zip
