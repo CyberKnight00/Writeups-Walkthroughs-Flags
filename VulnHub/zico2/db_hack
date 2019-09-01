@@ -1,0 +1,6 @@
+/** MySQL database username */
+define('DB_USER', 'zico');
+
+/** MySQL database password */
+define('DB_PASSWORD', 'sWfCsfJSPV9H3AmQzw8'); # It's a ssh cred
+
