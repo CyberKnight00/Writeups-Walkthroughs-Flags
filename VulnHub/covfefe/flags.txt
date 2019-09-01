@@ -1,0 +1,3 @@
+flag1{make_america_great_again}
+flag2{use_the_source_luke}
+flag3{das_bof_meister}
