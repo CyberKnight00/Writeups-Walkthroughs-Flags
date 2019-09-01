@@ -1,0 +1,8 @@
+flag1{YWxsdGhlZmlsZXM=} - allthefiles
+flag2{aW1mYWRtaW5pc3RyYXRvcg==} - imfadministrator
+flag3{Y29udGludWVUT2Ntcw==} - continueTOcms
+flag4{dXBsb2Fkcjk0Mi5waHA=} - uploadr942.php
+	http://192.168.0.51/imfadministrator/uploads/3d6cda51fc8d.gif?ctime=system&atime=
+flag5{YWdlbnRzZXJ2aWNlcw==} - agentservices
+
+agent id 48093572
