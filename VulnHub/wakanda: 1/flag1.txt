@@ -1,0 +1,5 @@
+flag1.txt
+mamadou@Wakanda1:~$ cat flag1.txt 
+
+Flag : d86b9ad71ca887f4dd1dac86ba1c4dfc
+

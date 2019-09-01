@@ -1,0 +1,76 @@
+<?php
+$password ="Niamey4Ever227!!!" ;//I have to remember it
+
+if (isset($_GET['lang']))
+{
+include($_GET['lang'].".php");
+}
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Vibranium market">
+    <meta name="author" content="mamadou">
+
+    <title>Vibranium Market</title>
+
+
+    <link href="bootstrap.css" rel="stylesheet">
+
+    
+    <link href="cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Vibranium Market</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Home</a>
+            <!-- <a class="nav-link active" href="?lang=fr">Fr/a> -->
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Coming soon</h1>
+        <p class="lead">
+          <?php
+            if (isset($_GET['lang']))
+          {
+          echo $message;
+          }
+          else
+          {
+            ?>
+
+            Next opening of the largest vibranium market. The products come directly from the wakanda. stay tuned!
+            <?php
+          }
+?>
+        </p>
+        <p class="lead">
+          <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+        </p>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Made by<a href="#">@mamadou</a></p>
+        </div>
+      </footer>
+    </div>
+
+
+
+  
+
+</body></html>
