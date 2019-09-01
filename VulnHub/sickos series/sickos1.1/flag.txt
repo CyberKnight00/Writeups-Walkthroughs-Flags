@@ -1,0 +1,9 @@
+a0216ea4d51874464078c618298b1367.txt
+root@SickOs:~# cat *txt
+cat *txt
+If you are viewing this!!
+
+ROOT!
+
+You have Succesfully completed SickOS1.1.
+Thanks for Trying
