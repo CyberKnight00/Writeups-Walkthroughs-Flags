@@ -1,0 +1,19 @@
+[root@Moria ~]# id
+uid=0(root) gid=0(root) groups=0(root)
+[root@Moria ~]# ls
+0  anaconda-ks.cfg  Desktop  flag.txt  hosts
+[root@Moria ~]# cat flag.txt 
+“All that is gold does not glitter,
+Not all those who wander are lost;
+The old that is strong does not wither,
+Deep roots are not reached by the frost.
+
+From the ashes a fire shall be woken,
+A light from the shadows shall spring;
+Renewed shall be blade that was broken,
+The crownless again shall be king.” 
+
+All That is Gold Does Not Glitter by J. R. R. Tolkien
+
+I hope you suff.. enjoyed this VM. It wasn't so hard, was it?
+-Abatchy
