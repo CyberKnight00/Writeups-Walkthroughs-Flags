@@ -1,0 +1,26 @@
+/\/\ (_)_ __ /\ /\__
+_|___ \
+/
+\| | '_ \/ / \ \ \ / / __) |
+/ /\/\ \ | | | \ \_/ /\ V / / __/
+\/
+\/_|_| |_|\___/ \_/ |_____|
+# You got r00t!
+flag{6d696e75326973617765736f6d65}
+# I hope you had fun hacking this box, I tried to design this VM to be (a bit)
+different
+# by having newer or not-so-common technologies and a minumal linux install.
+#
+# Please don't post the content below on Social Networks to let others do the
+challenge.
+#
+# As you know by now, the entry point is an XXE vulnerability that can be exploited
+by
+# modifying an image. After that you can enumerate a user and the linux version to
+know
+# that it uses a different file in its home dir.
+# To read this you used a suspicious file permission on certain text editor.
+# At least that's how it was planned ;)
+# Let me know if you got here using another method!
+#
+# contact@8bi
