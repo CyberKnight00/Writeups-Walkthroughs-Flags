@@ -1,0 +1,3 @@
+nezuko.txt  : 1af0941e0c4bd4564932184d47dd8bef
+zenitsu.txt : 3f2ada6791f96b6a50a9ee43ee6b62df
+root.txt    : 3ca33b8158d9dee5c35a7d6d793c7fd5
