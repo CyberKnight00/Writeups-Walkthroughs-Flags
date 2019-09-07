@@ -1,0 +1,24 @@
+888       888          888 888      8888888b.                             888 888 888 888 
+888   o   888          888 888      888  "Y88b                            888 888 888 888 
+888  d8b  888          888 888      888    888                            888 888 888 888 
+888 d888b 888  .d88b.  888 888      888    888  .d88b.  88888b.   .d88b.  888 888 888 888 
+888d88888b888 d8P  Y8b 888 888      888    888 d88""88b 888 "88b d8P  Y8b 888 888 888 888 
+88888P Y88888 88888888 888 888      888    888 888  888 888  888 88888888 Y8P Y8P Y8P Y8P 
+8888P   Y8888 Y8b.     888 888      888  .d88P Y88..88P 888  888 Y8b.      "   "   "   "  
+888P     Y888  "Y8888  888 888      8888888P"   "Y88P"  888  888  "Y8888  888 888 888 888 
+
+
+Congratulations!!!
+
+Hope you enjoyed DC-7.  Just wanted to send a big thanks out there to all those
+who have provided feedback, and all those who have taken the time to complete these little
+challenges.
+
+I'm sending out an especially big thanks to:
+
+@4nqr34z
+@D4mianWayne
+@0xmzfr
+@theart42
+
+If you enjoyed this CTF, send me a tweet via @DCAU7.
